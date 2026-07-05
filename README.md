@@ -11,9 +11,9 @@ time-series sensor data from the NASA CMAPSS benchmark dataset.
 
 | Service | URL |
 |---------|-----|
-| Streamlit Dashboard | [https://rul-aircraft-engine-aiml-project-jc326sqju3ue7tvwzoor6y.streamlit.app/](https://rul-aircraft-engine-aiml-project-jc326sqju3ue7tvwzoor6y.streamlit.app/) |
-| FastAPI Endpoint (Render) | Deploy your own — see [Render Deployment](#render-deployment-fastapi) below |
-| GitHub Repository | [https://github.com/satyam-311/RUL-aircraft-engine-aiml-project](https://github.com/satyam-311/RUL-aircraft-engine-aiml-project) |
+| Streamlit Dashboard | [rul-aircraft-engine-aiml-project-jc326sqju3ue7tvwzoor6y.streamlit.app](https://rul-aircraft-engine-aiml-project-jc326sqju3ue7tvwzoor6y.streamlit.app/) |
+| FastAPI Swagger UI | [rul-prediction-api.onrender.com/docs](https://rul-prediction-api.onrender.com/docs) |
+| GitHub Repository | [satyam-311/RUL-aircraft-engine-aiml-project](https://github.com/satyam-311/RUL-aircraft-engine-aiml-project) |
 
 ---
 
@@ -132,7 +132,6 @@ uv run jupyter nbconvert --to notebook --execute --inplace notebooks/03_deep_lea
 │   ├── constants/          # Fixed column names and sensor lists
 │   ├── logger/             # Rotating file logger
 │   └── exception/          # RULException with traceback extraction
-├── tests/
 ├── pyproject.toml          # Package manifest + dependency groups
 ├── uv.lock                 # Locked dependency graph (reproducible installs)
 └── requirements.txt        # pip-compatible deps (used by Streamlit Cloud)
@@ -162,7 +161,7 @@ A `render.yaml` is already included in the repo — Render auto-detects it.
 3. Render reads `render.yaml` and pre-fills everything automatically
 4. Click **Deploy** — first build takes ~5 minutes (PyTorch install)
 5. Your API will be live at `https://rul-prediction-api.onrender.com`
-6. Swagger UI: `https://rul-prediction-api.onrender.com/docs`
+6. Interactive docs: [https://rul-prediction-api.onrender.com/docs](https://rul-prediction-api.onrender.com/docs)
 
 > **Note:** The free tier spins down after 15 minutes of inactivity.
 > The first request after idle takes ~30 seconds to wake up.
