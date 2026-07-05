@@ -362,10 +362,10 @@ def _render_sidebar() -> None:
 
         st.markdown(
             f'<div style="font-size:0.84rem;line-height:2.2">'
-            f'<a href="https://data.nasa.gov/dataset/C-MAPSS-Aircraft-Engine-Simulator-Data/xaut-bemq" '
+            f'<a href="https://www.kaggle.com/datasets/behrad3d/nasa-cmaps?resource=download" '
             f'target="_blank" style="color:{C_ACCENT};text-decoration:none">'
-            f'NASA CMAPSS Dataset</a><br>'
-            f'<a href="https://github.com/satyam3112003" '
+            f'NASA CMAPSS Dataset (Kaggle)</a><br>'
+            f'<a href="https://github.com/satyam-311/RUL-aircraft-engine-aiml-project" '
             f'target="_blank" style="color:{C_ACCENT};text-decoration:none">'
             f'View on GitHub</a>'
             f'</div>',

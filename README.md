@@ -3,15 +3,17 @@
 Predicting the **Remaining Useful Life (RUL)** of turbofan aircraft engines using multivariate
 time-series sensor data from the NASA CMAPSS benchmark dataset.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://rul-aircraft-engine-aiml-project.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://rul-aircraft-engine-aiml-project-jc326sqju3ue7tvwzoor6y.streamlit.app/)
 
 ---
 
 ## Live Demo
 
-Open the Streamlit dashboard to upload engine sensor data and get real-time RUL predictions:
-
-> **[https://rul-aircraft-engine-aiml-project.streamlit.app](https://rul-aircraft-engine-aiml-project.streamlit.app)**
+| Service | URL |
+|---------|-----|
+| Streamlit Dashboard | [https://rul-aircraft-engine-aiml-project-jc326sqju3ue7tvwzoor6y.streamlit.app/](https://rul-aircraft-engine-aiml-project-jc326sqju3ue7tvwzoor6y.streamlit.app/) |
+| FastAPI Endpoint (Render) | Deploy your own — see [Render Deployment](#render-deployment-fastapi) below |
+| GitHub Repository | [https://github.com/satyam-311/RUL-aircraft-engine-aiml-project](https://github.com/satyam-311/RUL-aircraft-engine-aiml-project) |
 
 ---
 
@@ -113,7 +115,7 @@ uv run jupyter nbconvert --to notebook --execute --inplace notebooks/03_deep_lea
 │   └── processed/          # Preprocessed numpy arrays (gitignored, regeneratable)
 ├── notebooks/
 │   ├── 01_eda_fd001.ipynb
-│   ├── 02_baseline_ml_fd001.ipynb
+│   ├── 02_baseline_models.ipynb
 │   └── 03_deep_learning_fd001.ipynb
 ├── reports/
 │   ├── model_comparison.csv
@@ -150,6 +152,23 @@ The app is deployed at the URL above. To deploy your own fork:
 
 ---
 
+## Render Deployment (FastAPI)
+
+The FastAPI inference endpoint can be deployed for free on [Render](https://render.com).
+A `render.yaml` is already included in the repo — Render auto-detects it.
+
+1. Go to [render.com](https://render.com) and sign in with GitHub
+2. Click **New + → Web Service → Connect a repository** → select this repo
+3. Render reads `render.yaml` and pre-fills everything automatically
+4. Click **Deploy** — first build takes ~5 minutes (PyTorch install)
+5. Your API will be live at `https://rul-prediction-api.onrender.com`
+6. Swagger UI: `https://rul-prediction-api.onrender.com/docs`
+
+> **Note:** The free tier spins down after 15 minutes of inactivity.
+> The first request after idle takes ~30 seconds to wake up.
+
+---
+
 ## API Quick Reference
 
 ```bash
@@ -179,7 +198,7 @@ Full interactive docs: `http://localhost:8000/docs`
 - Fault mode: HPC degradation (single operating condition)
 - RUL capped at 125 cycles (standard CMAPSS convention)
 
-Original data: [NASA Prognostics Data Repository](https://www.nasa.gov/intelligent-systems-division/discovery-and-systems-health/pcoe/pcoe-data-set-repository/)
+Download: [NASA CMAPSS on Kaggle](https://www.kaggle.com/datasets/behrad3d/nasa-cmaps?resource=download)
 
 ---
 
