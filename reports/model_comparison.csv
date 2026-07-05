@@ -1,0 +1,5 @@
+model,test_rmse,test_mae,test_r2,low_rul_rmse,low_rul_bias,low_rul_flag,inference_ms_total,inference_us_per_sample,training_time_s,model_size_kb
+xgboost,14.5594,11.4193,0.8772,6.2119,2.5436,False,2.802,28.02,,1402.52
+bilstm,15.0167,11.4799,0.8694,3.9437,1.4199,False,13.369,133.688,129.99430669999856,170.8
+lstm,15.0368,11.4316,0.8691,3.8631,-0.427,False,1.836,18.364,81.3548163000014,86.36
+gru,15.2188,11.5441,0.8659,3.7332,-1.2512,False,5.337,53.371,133.55082299999776,65.6

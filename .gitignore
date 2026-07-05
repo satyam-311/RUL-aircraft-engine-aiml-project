@@ -1,0 +1,158 @@
+# =============================================================================
+# WHAT IS COMMITTED TO GIT (reference -- these are NOT excluded below)
+# =============================================================================
+#   src/              all Python source code
+#   app/              dashboard.py + api.py
+#   configs/          config.yaml
+#   artifacts/        preprocessor.pkl  (1.8 KB, required at runtime)
+#   saved_models/     *.pt + *.pkl + *_config.json  (< 2 MB each, required at runtime)
+#   reports/          model_comparison.csv, dl_comparison.csv, figures/*.png
+#   notebooks/        01_eda, 02_baseline_models, 03_deep_learning
+#   tests/            __init__.py (placeholder)
+#   pyproject.toml    package manifest + dependency groups
+#   uv.lock           locked dependency graph (reproducible installs)
+#   requirements.txt  pip-format deps for Streamlit Cloud
+#   .streamlit/       dark-theme config (Streamlit Cloud reads this)
+#   .vscode/          file-exclude settings only (no secrets)
+#   .python-version   Python 3.12 pin for uv
+#   run_dashboard.bat launcher scripts
+#   run_api.bat
+
+# =============================================================================
+# Python bytecode  -- auto-generated, never commit
+# =============================================================================
+__pycache__/
+*.py[oc]
+*.pyd
+.eggs/
+*.egg-info/
+build/
+dist/
+wheels/
+
+# =============================================================================
+# Virtual environments  -- NEVER commit (hundreds of MB, machine-specific)
+# =============================================================================
+.venv/
+venv/
+env/
+ENV/
+.virtualenv/
+
+# =============================================================================
+# Secrets & credentials  -- NEVER commit
+# Catching common filename patterns so nothing leaks by accident.
+# =============================================================================
+.env
+.env.*
+*.env
+.envrc
+secrets.yaml
+secrets.json
+secrets.toml
+credentials.json
+credentials.yaml
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+api_keys.txt
+token.json
+
+# =============================================================================
+# OS junk
+# =============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# =============================================================================
+# IDE / editor  (project-level settings only -- .vscode/ IS committed)
+# =============================================================================
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# =============================================================================
+# Dev-tool caches  -- regenerated automatically, not useful to others
+# =============================================================================
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.hypothesis/
+.tox/
+.nox/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# =============================================================================
+# Jupyter
+# =============================================================================
+.ipynb_checkpoints/
+
+# =============================================================================
+# Temp / scratch files
+# =============================================================================
+*.tmp
+*.temp
+*.bak
+*.swp
+tmp/
+temp/
+scratch/
+
+# =============================================================================
+# ML experiment tracking  -- not used in this project, excluded preventively
+# =============================================================================
+mlruns/
+wandb/
+lightning_logs/
+
+# =============================================================================
+# Large training-only checkpoint formats
+# NOTE: saved_models/ and artifacts/ are NOT listed here -- they ARE committed.
+#       Only the heavyweight formats produced during multi-epoch training runs
+#       (which can be hundreds of MB) are excluded.
+# =============================================================================
+*.ckpt
+*.h5
+
+# =============================================================================
+# Logs  -- generated at runtime, machine-specific, not useful to others
+# =============================================================================
+logs/
+*.log
+
+# =============================================================================
+# Data files
+# =============================================================================
+
+# Raw CMAPSS dataset -- external source, not shipped with this repo.
+# Dashboard Tab 1 degrades gracefully when absent.
+# Download from: https://data.nasa.gov/dataset/C-MAPSS-Aircraft-Engine-Simulator-Data/xaut-bemq
+# Place at: data/raw/FD001/{train,test,RUL}_FD001.txt
+data/raw/*
+!data/raw/.gitkeep
+
+# Processed numpy / parquet arrays (70+ MB) -- regenerate locally with:
+#   uv run python -m rul_prediction.components.preprocessor
+data/processed/*
+!data/processed/.gitkeep
+
+# External data placeholder
+data/external/*
+!data/external/.gitkeep

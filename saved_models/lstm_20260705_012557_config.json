@@ -1,0 +1,8 @@
+{
+  "input_size": 17,
+  "hidden_size": 64,
+  "num_layers": 1,
+  "model_type": "lstm",
+  "dropout": 0.2,
+  "training_time_s": 81.3548163000014
+}

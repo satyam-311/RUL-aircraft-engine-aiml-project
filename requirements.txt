@@ -1,0 +1,41 @@
+# Runtime dependencies for the RUL Prediction project.
+# Kept in sync with pyproject.toml [project.dependencies].
+# Streamlit Community Cloud reads this file for pip installation.
+#
+# NOTE: Streamlit Cloud only hosts the dashboard (app/dashboard.py).
+#       The FastAPI endpoint (app/api.py) must be deployed separately.
+
+# Core / config
+pyyaml>=6.0.3
+pyarrow>=24.0.0
+
+# Data handling
+pandas>=3.0.3
+numpy>=2.4.6
+numba>=0.60          # pins llvmlite >= 0.40 for Python 3.12 compatibility
+joblib>=1.5.3
+
+# Visualisation
+matplotlib>=3.11.0
+seaborn>=0.13.2
+plotly>=6.8.0
+
+# ML models
+scikit-learn>=1.9.0
+xgboost>=3.3.0
+lightgbm>=4.6.0
+
+# Deep learning
+torch>=2.12.1
+
+# Explainability
+shap>=0.50.0
+optuna>=4.9.0
+
+# Dashboard
+streamlit>=1.58.0
+
+# FastAPI inference endpoint (Phase 10) -- not used by Streamlit Cloud dashboard
+fastapi>=0.139.0
+uvicorn>=0.50.0
+python-multipart>=0.0.20

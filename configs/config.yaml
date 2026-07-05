@@ -1,0 +1,42 @@
+# Central runtime configuration for the RUL prediction project.
+# Values here are safe to change without touching source code.
+
+seed: 42
+
+paths:
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  external_data_dir: "data/external"
+  artifacts_dir: "artifacts"
+  saved_models_dir: "saved_models"
+  logs_dir: "logs"
+
+dataset:
+  active_subset: "FD001"   # one of FD001, FD002, FD003, FD004
+  window_size: 30          # sliding window length for sequence models
+  rul_cap: 125              # cap RUL at this value (standard in CMAPSS literature)
+
+training:
+  test_size: 0.2
+  batch_size: 64
+  learning_rate: 0.001
+  num_epochs: 200             # DL models use early stopping; baseline ML ignores this
+
+model:
+  # ---- shared ----
+  type: "lstm"               # baseline: linear_regression | random_forest | xgboost | lightgbm
+                              # DL:       lstm | gru | bilstm  (lstm = winner; safest bias direction)
+  # ---- baseline ML (Phase 4) ----
+  hyperparameters:           # update with Optuna best params after running notebook 02
+    n_estimators: 300
+    max_depth: 6
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.8
+  # ---- deep learning (Phase 5) ----
+  hidden_size: 64
+  num_layers: 1
+  dropout: 0.2
+  early_stopping_patience: 10
+  rul_threshold: 30.0        # tau: low-RUL boundary for asymmetric loss and safety flagging
+  loss_alpha: 2.0            # alpha: over-prediction penalty multiplier in danger zone
